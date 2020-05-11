@@ -9,7 +9,7 @@ class TVSerieModel {
   static findById(id){
     return TVSerie.findOne({_id: ObjectId(id)})
   }
-  static create(newTVSeries){
+  static create(newTVSerie){
     return TVSerie.insertOne(newTVSerie)
   }
   static findByIdAndUpdate(id, updatedData){

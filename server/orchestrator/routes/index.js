@@ -5,17 +5,17 @@ const TVController = require("../controllers/TVController")
 
 router.get("/entertainme", EntertainmeController.find)
 
-Router.get("/movie", MovieController.find)
-Router.get("/movie/:id", MovieController.findById)
-Router.post("/movie", MovieController.create)
-Router.put("/movie/:id", MovieController.update)
-Router.delete("/movie/:id", MovieController.remove)
+router.get("/movies", MovieController.find)
+router.get("/movies/:id", MovieController.findById)
+router.post("/movies", MovieController.create)
+router.put("/movies/:id", MovieController.update)
+router.delete("/movies/:id", MovieController.remove)
 
-Router.get("/tv", TVController.find)
-Router.get("/tv/:id", TVController.findById)
-Router.post("/tv", TVController.create)
-Router.put("/tv/:id", TVController.update)
-Router.delete("/tv/:id", TVController.remove)
+router.get("/tv", TVController.find)
+router.get("/tv/:id", TVController.findById)
+router.post("/tv", TVController.create)
+router.put("/tv/:id", TVController.update)
+router.delete("/tv/:id", TVController.remove)
 
 
 module.exports = router

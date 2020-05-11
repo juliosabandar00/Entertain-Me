@@ -5,8 +5,9 @@ const redis = new Redis()
 class TVController {  
   static async find(req, res, next){
     try {
-      const tvSeries =  JSON.parse(await redis.get("tvSeries"))
+      const tvSeries = JSON.parse(await redis.get('tvSeries'));
       if(tvSeries){ 
+        console.log('aaaa')
        res.status(200).json(tvSeries)
       }
       else {
@@ -15,13 +16,13 @@ class TVController {
           method : "get"
         })
         res.status(200).json(data)
-        redis.set("students", JSON.stringify(data))
+        redis.set("tvSeries", JSON.stringify(data))
       }
     } catch (error) {
       res.send(error)
     }
   }
-  static findById(req, res, next){
+  static async findById(req, res, next){
     axios({
       url : `http://localhost:3002/tv/${req.params.id}`,
       method : "get"
@@ -33,7 +34,7 @@ class TVController {
       res.send(err)
     })
   }
-  static create(req, res, next){
+  static async create(req, res, next){
     try {
       const {data} = await axios({
         url : "http://localhost:3002/tv",
@@ -52,29 +53,48 @@ class TVController {
     }
   }
 
-  static update(req, res, next){
-    axios({
-      url : `http://localhost:3002/tv/${req.params.id}`,
-      method : "put"
-    })
-    .then(({data}) => {
-      res.status(200).json(data)
-    })
-    .catch(err => {
-      res.send(err)
-    })
+  static async update(req, res, next){
+    try {
+      const {data} = await axios({
+        url : `http://localhost:3002/tv/${req.params.id}`,
+        method : "put",
+        data : req.body
+      })
+      res.status(201).json(data)
+      let tvSeries =  JSON.parse(await redis.get("tvSeries"))
+      if(tvSeries){
+        for(let i=0; i<tvSeries.length; i++){
+          if(tvSeries[i]._id == data._id){
+            tvSeries[i] = data;
+            break;
+          }
+        }
+        redis.set("tvSeries", JSON.stringify(tvSeries))
+      }
+    } catch (error) {
+      res.send(error)
+    }    
   }
-  static remove(req, res, next){
-    axios({
-      url : `http://localhost:3002/tv/${req.params.id}`,
-      method : "delete"
-    })
-    .then(({data}) => {
-      res.status(200).json(data)
-    })
-    .catch(err => {
-      res.send(err)
-    })
+  static async remove(req, res, next){
+    try {
+      const {data} = await axios({
+        url : `http://localhost:3002/tv/${req.params.id}`,
+        method : "delete"
+      })
+      res.status(200).json({removed: data})
+      let tvSeries =  JSON.parse(await redis.get("tvSeries"))
+      if(tvSeries){
+        for(let i=0; i<tvSeries.length; i++){
+          if(tvSeries[i]._id == data._id){
+            tvSeries.splice(i, 1)
+            break;
+          }
+        }
+        redis.set("tvSeries", JSON.stringify(tvSeries))
+      }
+    } catch (error) {
+      res.send(error)
+    }
   }
 }
 module.exports = TVController

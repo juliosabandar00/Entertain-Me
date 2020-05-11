@@ -28,6 +28,7 @@ class MovieController {
   static create(req, res, next){
     Movie.create(req.body)
     .then(result => {
+      console.log(result)
       res.status(200).json(result)
     })
     .catch(err=> {
@@ -41,6 +42,12 @@ class MovieController {
     Movie.findByIdAndUpdate(req.params.id, req.body)
     .then(result => {
       res.status(200).json(result)
+    })
+    .catch(err=> {
+      console.log(err)
+      res.status(500).json({
+        message : "Internal Server Error"
+      })
     })
   }
   static remove(req, res, next){

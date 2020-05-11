@@ -23,8 +23,8 @@ class EntertainmeController {
           method : "get"
         })
         res.status(200).json({
-          movies,
-          tvSeries
+          movies: movieData,
+          tvSeries: tvData
         })
         redis.set("movies", JSON.stringify(movieData));
         redis.set("tvSeries", JSON.stringify(tvData));
