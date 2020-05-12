@@ -18,7 +18,7 @@ type Tv {
   tags: [String]
 }
 type EntertaineMe {
-  movies: [Movie],
+  movies: [Movie]
   tvSeries: [Tv]
 }
 input InputMovie {
@@ -40,7 +40,7 @@ type Query {
   movies: [Movie]
   movie(_id: ID): Movie
   tvs: [Tv]
-  tv(_id: ID!): Tv
+  tv(_id: ID): Tv
 }
 type Mutation {
   addMovie(movie: InputMovie): Movie

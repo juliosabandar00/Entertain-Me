@@ -1,0 +1,210 @@
+.App {
+  text-align: center;
+}
+
+body{
+  margin: auto
+}
+
+.navey {
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 2px 2px -2px rgba(0,0,5,.5);
+}
+
+.homeBackground{
+  background-image: url('/background3.jpg');
+  background-size: cover;
+  height: 85vh;
+  background-repeat: no-repeat;
+}
+
+.home-title{
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 70px;
+}
+
+
+.card-container{
+  padding: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-rows: auto; 
+  grid-gap: 1rem;
+}
+
+.detail-card{
+  display: flex;
+  height: 700px;
+}
+
+.edit-form-container {
+  padding: 80px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: lightblue;
+  border-radius: 30px;
+}
+
+.formTitle{
+  text-align: center;
+}
+
+.formTitleText{
+  color: white;
+  font-size: 50px;
+}
+
+.menu-card:hover{
+  resize: 103%;
+  transform: scale(1.025);
+}
+
+.mainbody{
+  padding: 50px;
+
+}
+
+.detail-image{
+  height: 700px;
+  object-fit: cover;
+}
+
+.details_header{
+  display: flex;
+  justify-content: center;
+}
+
+.details_header_content{
+  margin: 10px;
+}
+
+.detail-container{
+  padding: 30px;
+}
+
+
+
+.pop_container{
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  height: 35px;
+  width: 35px;
+  padding: 5px;
+  background-color: yellowgreen;
+}
+
+
+
+.content{
+  text-align: center;
+}
+
+.detail-content{
+  max-width: 800px;
+  object-fit: cover;
+}
+
+.tags{
+  display: flex;
+  justify-content: center;
+
+}
+
+.tag{
+  font-size: smaller;
+  margin: 2px;
+}
+
+.button-container{
+  display: flex;
+  justify-content: center;
+}
+
+.button{
+  margin-right: 5px;
+}
+
+.player{
+  display: flex;
+  position: fixed;
+  height: 150px;
+  width: 100%;
+  bottom: 0px;
+  z-index:1;
+  border-radius: 0 !important;
+}
+
+.loadingPage {
+  height: 400px;
+  width: 100%;
+}
+
+.spinner-border{
+  margin-left: 50%;
+  margin-top: 11.5%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.trackcard{
+  margin: 0 auto;
+  height: 202px;
+  width: 600px;
+  transition: transform .2s;
+}
+
+.trackcard:hover {
+  resize: 103%;
+  transform: scale(1.025);
+}
+
+.body {
+  background-color: white;
+}
+
+.searchDivElement{
+  margin: 2px;
+}
+
+
+h1 {
+  margin: auto;
+  font-size: 150%;
+}
+
+.title {
+  text-align: center;
+}
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

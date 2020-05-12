@@ -7,6 +7,7 @@ const tvUrl = 'http://localhost:3002/tv';
 const resolvers = {
   Query: {
     entertainme: async () => {
+      console.log('eeeeee')
       try {
         const movies =  JSON.parse(await redis.get("movies"))
         const tvSeries =  JSON.parse(await redis.get("tvSeries"))
@@ -69,7 +70,6 @@ const resolvers = {
     },
     movie: async (parent, args, context, info) => {
       try {
-        console.log('masuk sini')
         const { _id } = args;
         const movies = JSON.parse( await redis.get('movies'));
         let movie = null;
