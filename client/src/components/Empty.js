@@ -12,7 +12,7 @@ function Loading (){
             <br/>
             <br/>
             <br/>
-            <p className="notif">Loading...</p>
+            <p className="notif">There's nothing here...</p>
         </div>
     )
 }

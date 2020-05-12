@@ -57,6 +57,7 @@ body{
   font-size: 50px;
 }
 
+
 .menu-card:hover{
   resize: 103%;
   transform: scale(1.025);
@@ -82,10 +83,10 @@ body{
 }
 
 .detail-container{
-  padding: 30px;
+  max-width: 140vh;
+  padding: 100px;
+  margin: 0 auto;
 }
-
-
 
 .pop_container{
   border-radius: 5px;
@@ -96,7 +97,6 @@ body{
   padding: 5px;
   background-color: yellowgreen;
 }
-
 
 
 .content{
@@ -139,8 +139,11 @@ body{
 }
 
 .loadingPage {
-  height: 400px;
+  height: 90vh;
   width: 100%;
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
 }
 
 .spinner-border{
@@ -154,25 +157,6 @@ body{
   }
 }
 
-.trackcard{
-  margin: 0 auto;
-  height: 202px;
-  width: 600px;
-  transition: transform .2s;
-}
-
-.trackcard:hover {
-  resize: 103%;
-  transform: scale(1.025);
-}
-
-.body {
-  background-color: white;
-}
-
-.searchDivElement{
-  margin: 2px;
-}
 
 
 h1 {

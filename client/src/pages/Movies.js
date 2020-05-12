@@ -5,6 +5,9 @@ import {DELETE_MOVIE, GET_MOVIES} from '../service/schema';
 import {useMutation} from '@apollo/react-hooks'
 import Loading from '../components/Loading'
 import swal from 'sweetalert';
+import * as bulmaToast from "bulma-toast";
+import Empty from '../components/Empty'
+
 
 function Movies() {
     const [deleteMovie] = useMutation(DELETE_MOVIE,{refetchQueries:[{query:GET_MOVIES}]})
@@ -15,14 +18,27 @@ function Movies() {
     }
     const {loading,error,data} = useQuery(GET_MOVIES);
     if(error){
-        return <p>error</p>
+        bulmaToast.toast({
+            message: "Error!",
+            type: "is-danger",
+            position: "top-center",
+            closeOnClick: true,
+            pauseOnHover: true,
+            opacity: 0.8,
+        });
     }
     else if(loading){
         return <Loading/>
     }
+    else if(data.movies.length < 1){
+        return <Empty/>
+    }
+
     else if(data){
     return(
         <div>
+            <br/>
+            <br/>
             <div className="card-container">
                 {
                     data.movies.map((movie, idx)=> {

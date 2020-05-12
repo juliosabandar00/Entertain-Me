@@ -3,13 +3,21 @@ import {useQuery} from '@apollo/react-hooks';
 import {GET_ALL} from '../service/schema';
 import HomeBanner from '../components/HomeBanner'
 import Loading from '../components/Loading'
+import * as bulmaToast from "bulma-toast";
 function Home() {
   const {loading,error,data} = useQuery(GET_ALL);
   if(error){
+    bulmaToast.toast({
+      message: "Error!",
+      type: "is-danger",
+      position: "top-center",
+      closeOnClick: true,
+      pauseOnHover: true,
+      opacity: 0.8,
+    });
     return (
       <>
       <HomeBanner/>
-      <p>error</p>
       </>)
   }
   else if(loading){

@@ -4,6 +4,7 @@ import {useParams} from 'react-router-dom';
 import {useQuery} from '@apollo/react-hooks';
 import EditForm from '../components/editForm'
 import Loading from '../components/Loading'
+import * as bulmaToast from "bulma-toast";
 
 function EditMovie() {
     const {id} = useParams();
@@ -11,7 +12,14 @@ function EditMovie() {
         variables:{_id: id}
     });
     if(error){
-        return <p>error</p>
+        bulmaToast.toast({
+            message: "Error!",
+            type: "is-danger",
+            position: "top-center",
+            closeOnClick: true,
+            pauseOnHover: true,
+            opacity: 0.8,
+        });
     }
     else if(loading){
         return <Loading/>
@@ -19,6 +27,8 @@ function EditMovie() {
     else if (data) {
         return(
             <div className="mainbody">
+                <br></br>
+                <br></br>
                 <div className="edit-form-container">
                     <EditForm data={data.movie}/>
                 </div>

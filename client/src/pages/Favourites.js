@@ -3,6 +3,8 @@ import {useQuery} from '@apollo/react-hooks';
 import {useHistory} from 'react-router-dom';
 import {ADD_TO_FAVOURITES, GET_FAVOURITES, REMOVE_FAVOURITES} from '../service/schema'
 import Loading from '../components/Loading'
+import * as bulmaToast from "bulma-toast";
+import Empty from '../components/Empty'
 
 
 function Favourites() {
@@ -10,14 +12,27 @@ function Favourites() {
 
     const history = useHistory()
     if(error){
-        return <p>error</p>
+        bulmaToast.toast({
+            message: "Error!",
+            type: "is-danger",
+            position: "top-center",
+            closeOnClick: true,
+            pauseOnHover: true,
+            opacity: 0.8,
+        });
     }
     else if(loading){
         return <Loading/>
     }
+    else if(data.favourites.length < 1){
+        return <Empty/>
+    }
     else if(data){
     return(
         <div>
+                        <br/>
+            <br/>
+
             <div className="card-container">
                 {
                     data.favourites.map((movie, idx)=> {

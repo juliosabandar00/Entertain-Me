@@ -4,6 +4,8 @@ import {useParams} from 'react-router-dom';
 import {useMutation, useQuery} from '@apollo/react-hooks';
 import {ADD_TO_FAVOURITES, GET_FAVOURITES, REMOVE_FAVOURITES} from '../service/schema'
 import Loading from '../components/Loading'
+import * as bulmaToast from "bulma-toast";
+
 
 function EditTV() {
     const {id} = useParams();
@@ -15,7 +17,14 @@ function EditTV() {
     const {data:dataFavs} = useQuery(GET_FAVOURITES)
 
     if(error){
-        return <p>error</p>
+        bulmaToast.toast({
+            message: "Error!",
+            type: "is-danger",
+            position: "top-center",
+            closeOnClick: true,
+            pauseOnHover: true,
+            opacity: 0.8,
+        });
     }
     else if(loading){
         return <Loading/>
@@ -25,6 +34,9 @@ function EditTV() {
 
         return(
             <div className="detail-container">
+                            <br/>
+            <br/>
+
                 <div className="card detail-card">
                     <div className="detail-image">
                         <img className="detail-image" src={data.tv.poster_path} alt="Placeholder image"/>
