@@ -42,12 +42,11 @@ function TV() {
             }
             else if(type === "TV"){
                 console.log('TV Detect')
-                addTv({variables:{movie:data}})
-
+                addTv({variables:{tv:data}})
             }    
             history.push("/");
             bulmaToast.toast({
-                message: "Edit Success",
+                message: "Add Success",
                 type: "is-primary",
                 position: "top-center",
                 closeOnClick: true,
